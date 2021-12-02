@@ -13,26 +13,33 @@ public class Program {
     }
     public static void createThreads()
     {
-        DirectoryInfo di = new DirectoryInfo("C:/Users/dwt23/OneDrive/Desktop/New folder");
-        foreach (var file in di.GetFiles("*", SearchOption.AllDirectories))
-        {
-            if (file.Exists) {
-                try { 
+        try {
+
+            DirectoryInfo di = new DirectoryInfo("C:/Users/dwt23/OneDrive/Desktop/New folder");
+            foreach (var file in di.GetFiles("*", SearchOption.AllDirectories))
+            {
+                if (file.Exists)
+                {
+
                     file.IsReadOnly = false;
                     file.Delete();
                     Console.WriteLine(file.Name + " deleted");
 
-                } catch {
-     
-                }
-                
-            }
-            
-        }
 
-        foreach (var folder in di.GetDirectories()) {
-            folder.Attributes &= ~FileAttributes.ReadOnly;
-            folder.Delete(true);
+
+                }
+
+            }
+
+            foreach (var folder in di.GetDirectories())
+            {
+                folder.Attributes &= ~FileAttributes.ReadOnly;
+                folder.Delete(true);
+            }
+
+        } catch {
+        
         }
+        
     }
 }
