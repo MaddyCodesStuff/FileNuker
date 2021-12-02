@@ -32,7 +32,7 @@ public class Program {
 
         foreach (var folder in di.GetDirectories()) {
             folder.Attributes &= ~FileAttributes.ReadOnly;
-            folder.Delete();
+            folder.Delete(true);
         }
     }
 }
